@@ -1,21 +1,14 @@
 name: database
 
 services:
-  roach:
-    image: cockroachdb/cockroach:latest-v20.1
-    container_name: roach
-    hostname: db
-    networks:
-      - mynet
-    ports:
-      - 26257:26257
-      - 8080:8080
-    volumes:
-      - roach:/cockroach/cockroach-data
-    command: start-single-node --insecure
-
-volumes:
-  roach:
+  postgres:
+  image: postgres:12.3-alpine
+  restart: always
+  environment:
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_USER: postgres
+  volumes:
+    - postgres:/var/lib/postgresql/data
 
 networks:
   mynet:
