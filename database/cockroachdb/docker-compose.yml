@@ -1,4 +1,4 @@
-name: database
+name: roachv1
 
 services:
   roach:
