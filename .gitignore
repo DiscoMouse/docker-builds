@@ -8,6 +8,14 @@
 *.so
 *.dylib
 
+# .env file used by docker build
+
+.env
+
+# wild card *.env to catch backup files as well
+
+*.env
+
 # Test binary, built with `go test -c`
 *.test
 
