@@ -1,0 +1,22 @@
+name: roachv1
+
+services:
+  roach:
+    image: cockroachdb/cockroach:latest-v23.1
+    container_name: roach
+    hostname: db
+    networks:
+      - mynet
+    ports:
+      - 26257:26257
+      - 8080:8080
+    volumes:
+      - roach:/cockroach/cockroach-data
+    command: start-single-node --insecure
+
+volumes:
+  roach:
+
+networks:
+  mynet:
+    driver: bridge
