@@ -1,4 +1,4 @@
-name: database
+name: postgresv1
 
 services:
   postgres:
