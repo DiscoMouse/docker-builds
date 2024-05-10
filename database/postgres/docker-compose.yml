@@ -3,6 +3,10 @@ name: database
 services:
   postgres:
     image: postgres:16.3-alpine
+    container_name: postgres
+    hostname: db
+    networks:
+      - dbnet
     restart: always
     environment:
       POSTGRES_PASSWORD: ${PGPASSWORD:?database password not set}
@@ -27,3 +31,7 @@ services:
 volumes:
   postgres:
   pgadmin:
+
+networks:
+  dbnet:
+    driver: bridge
