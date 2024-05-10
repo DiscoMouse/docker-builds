@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres:16.3-alpine
     container_name: postgres
-    hostname: db
+    hostname: postgres
     networks:
       - dbnet
     restart: always
@@ -17,6 +17,9 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4:8.6
+    container_name: pgadmin
+    networks:
+      - dbnet
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGAEMAIL:?pgadmin email not set}
       PGADMIN_DEFAULT_PASSWORD: ${PGAPASSWORD:?pgadmin password not set}
